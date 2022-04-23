@@ -59,6 +59,7 @@ bool displayOn;
 bool readyMoveSense;
 
 //Server Vars
+StaticJsonDocument<256> doc;
 int ownerID = 1;
 String mailboxName = "Arduino";
 int mailboxID = 2;
