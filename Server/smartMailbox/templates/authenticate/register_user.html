@@ -1,0 +1,42 @@
+{% extends 'home/header.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'home/navbar.html' %}
+<div class="d-flex justify-content-center">
+    <h1> Register </h1>
+</div>
+<div class="d-flex justify-content-center">
+
+    <div class="row">
+<form action="{% url 'register_user' %}" method="POST">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    
+    <br/>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <br/>
+</form>
+    <br/>
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Error</strong> {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>
+    {% if form.errors %}
+<br/>
+
+<div class="row">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Error</strong> {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+</div>
+</div> 
+{% endblock %}

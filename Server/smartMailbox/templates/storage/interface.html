@@ -1,0 +1,68 @@
+{% extends 'home/header.html' %}
+{% load static %}
+
+{% block content %}
+
+    {% include 'home/navbar.html' %}
+
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Sucess: </strong> {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="d-flex justify-content-center">
+        <div class="d-flex overflow-scroll">
+            {% for item in mailboxes %}
+          <div class="col">
+            <div class="d-inline-flex p-2 bd-highlight">
+            <div class="card" style="width: 27rem;">
+                <div class="card-body">
+                  <h5 class="card-title">{{ item.mailbox.name }}</h5>
+                  <p class="card-text"> ID : {{ item.mailbox.id }}</p>
+                  <p class="card-text"> Unlocked : {{ item.mailbox.unlocked }}</p>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col">
+                        Date
+                      </div>
+                      <div class="col">
+                        Opened
+                      </div>
+                      <div class="col">
+                        Moved
+                      </div>
+                    </div>
+                  </div>
+                  {% for update in item.updates %}
+                  <div class="container">
+                    <div class="row">
+                      <div class="col">
+                        {{update.updateTime}}
+                      </div>
+                      <div class="col">
+                        {{update.opened}}
+                      </div>
+                      <div class="col">
+                        {{update.moved}}
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+                <div class="container ">
+                <a href="{% url 'box_edit' pk=item.mailbox.id %}" class="btn btn-primary float-end">Edit</a>
+                <a href="#" class="btn btn-primary">Updates</a>
+                </div>
+          </div>
+          </div>
+          </div>
+            {% endfor %}
+
+        </div>
+      </div>
+
+{% endblock %}

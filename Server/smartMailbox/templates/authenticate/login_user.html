@@ -1,0 +1,38 @@
+{% extends 'home/header.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'home/navbar.html' %}
+
+{% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Error</strong> No matching Creditals
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    {% endif %}
+
+<div class="d-flex justify-content-center">
+  <h1> Login </h1>
+</div>
+<div class="d-flex justify-content-center">
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="inputUser" class="form-label">Username</label>
+      <input type="text" class="form-control" name="username">
+    </div>
+    <div class="mb-3">
+      <label for="InputPassword" class="form-label">Password</label>
+      <input type="password" class="form-control" name="password">
+    </div>
+    <a href="{% url 'register_user' %}"><u>Click here to register</u></a>
+    <br/>
+    <button type="submit" class="btn btn-primary">Submit</button>
+   
+    
+</form>
+<br/>
+</div>
+{% endblock %}

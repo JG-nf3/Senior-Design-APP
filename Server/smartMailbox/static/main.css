@@ -1,0 +1,12 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #83838380;
+    border: 20px;
+
+}
+
+.scroll {
+    max-width: 100px;
+    overflow-y: auto;
+}

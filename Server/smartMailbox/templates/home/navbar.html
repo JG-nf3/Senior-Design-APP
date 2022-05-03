@@ -1,0 +1,38 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'Logo copy 2.png' %}"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+              {% if user.is_authenticated %}
+              <a class="nav-link" href="{% url 'box_new' %}">Create Box</a>
+              {% else %}
+              <a class="nav-link" href="{% url 'login_user' %}">Create Box</a>
+              {% endif %}
+
+              {% if user.is_authenticated %}
+              <a class="nav-link" href="{% url 'interface' %}">Interface</a>
+              {% else %}
+              <a class="nav-link" href="{% url 'interface_login_user' %}">Interface</a>
+              {% endif %}
+
+              {% if user.is_authenticated %}
+              <a class="nav-link" href="{% url 'user_settings' %}">User Settings</a>
+              {% else %}
+              <a class="nav-link" href="{% url 'login_user' %}">User Settings</a>
+              {% endif %}
+              
+          </ul>
+          {% if user.is_authenticated %}
+          <a class="btn btn-outline-success" href="{% url 'logout_user' %}" role="button">Logout</a>
+          {% else %}
+          <a class="btn btn-outline-success" href="{% url 'login_user' %}" role="button">Login</a>
+          {% endif %}
+      </div>
+    </div>
+  </nav>

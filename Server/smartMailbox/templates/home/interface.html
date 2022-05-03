@@ -1,0 +1,27 @@
+{% extends 'home/header.html' %}
+{% load static %}
+
+{% block content %}
+
+    {% include 'home/navbar.html' %}
+
+    <h1>Interface directly with the Smart Mailbox</h1>
+    <div class="container">Hello {{User}}!  What would you like to do?</div>
+    <div class="container d-grid gap-2 d-md-block">
+        <a class="btn btn-primary btn-lg" href="{% url 'change_passcode' %}" type="button">Change Box passcode</a>
+    </div>
+    <br />
+    <div class="container d-grid gap-2 d-md-block">
+        <a class="btn btn-primary btn-lg" href="{% url 'box_activity' %}" type="button">Check Box Activity</a>
+    </div>
+    <br />
+    <div class="container d-grid gap-2 d-md-block">
+        <button class="btn btn-primary btn-lg" type="button">Open Box</button>
+        
+    </div>
+    <br />
+    <div class="container d-grid gap-2 d-md-block">
+        <button class="btn btn-primary btn-lg" type="button">Lock Box</button>
+    </div>
+{% endblock %}
+
